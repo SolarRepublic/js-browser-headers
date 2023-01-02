@@ -56,6 +56,7 @@ export function getHeaderKeys(headersAsNative: Headers): string[] {
   const asMap: {[key: string]: boolean} = {};
   const keys: string[] = [];
 
+  // @ts-expect-error idk
   if (headers.keys) {
     iterateHeadersKeys(headers, key => {
       if (!asMap[key]) {
