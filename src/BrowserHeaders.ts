@@ -30,9 +30,11 @@ function isBrowserHeaders(arg: any): arg is BrowserHeaders {
 // BrowserHeaders is a wrapper class for Headers
 export class BrowserHeaders {
   headersMap: {[key: string]: string[]};
+  statusCode: number;
 
   constructor(init: BrowserHeaders.ConstructorArg = {}, options: {splitValues: boolean} = { splitValues: false } ) {
     this.headersMap = {};
+    this.statusCode = 0;
 
     if (init) {
       if (typeof Headers !== "undefined" && init instanceof Headers) {
