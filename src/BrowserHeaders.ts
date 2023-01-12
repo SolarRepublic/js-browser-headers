@@ -31,10 +31,24 @@ function isBrowserHeaders(arg: any): arg is BrowserHeaders {
 export class BrowserHeaders {
   headersMap: {[key: string]: string[]};
   statusCode: number;
+  url: string;
+  requestConfig: Record<string, any>;
 
-  constructor(init: BrowserHeaders.ConstructorArg = {}, options: {splitValues: boolean, statusCode?: number} = { splitValues: false, statusCode: 0 } ) {
+  constructor(init: BrowserHeaders.ConstructorArg = {}, options: {
+    splitValues: boolean,
+    statusCode?: number,
+    url?: string,
+    requestConfig?: Record<string, any>,
+  } = {
+    splitValues: false,
+    statusCode: 0,
+    url: '',
+    requestConfig: {},
+  } ) {
     this.headersMap = {};
     this.statusCode = options.statusCode || 0;
+    this.url = options.url || '';
+    this.requestConfig = options.requestConfig || {};
 
     if (init) {
       if (typeof Headers !== "undefined" && init instanceof Headers) {
