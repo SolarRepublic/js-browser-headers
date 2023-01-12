@@ -32,9 +32,9 @@ export class BrowserHeaders {
   headersMap: {[key: string]: string[]};
   statusCode: number;
 
-  constructor(init: BrowserHeaders.ConstructorArg = {}, options: {splitValues: boolean} = { splitValues: false } ) {
+  constructor(init: BrowserHeaders.ConstructorArg = {}, options: {splitValues: boolean, statusCode?: number} = { splitValues: false, statusCode: 0 } ) {
     this.headersMap = {};
-    this.statusCode = 0;
+    this.statusCode = options.statusCode || 0;
 
     if (init) {
       if (typeof Headers !== "undefined" && init instanceof Headers) {
